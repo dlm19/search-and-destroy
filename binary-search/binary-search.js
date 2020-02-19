@@ -2,35 +2,32 @@
 
 // Complete this algo
 const binarySearch = (array, target) => {
-	let midpoint = Math.floor(array.length/2)
-	console.log(midpoint, array)
-	console.log(array[midpoint])
-	if (array[midpoint] === target) {
-		console.log(array[midpoint] === target)
-		//console.log(target)
-		return (array[midpoint] === target)
-	}
+  let midpoint = Math.floor(array.length / 2);
 
-	if (array.length === 2) {
-		console.log('inside')
-		if (array[0] === target || array[1] === target) {
-			return true
-		} else {
-			console.log('inside of else')
-			return false
-		}
-	} else {
-		if (array[midpoint] > target) {
-			// array.splice(midpoint)
-			let newArr = array.slice(0, midpoint)
-			binarySearch(newArr, target)
-		} else {
-			let newMidpoint = midpoint + 1
-			// array.splice(0, newMidpoint)
-			let newArr = array.slice(newMidpoint)
-			binarySearch(newArr, target)
-		}
-	}
+  if (array.length < 1) {
+    return false;
+  }
+
+  if (array[midpoint] === target) {
+    return true;
+  }
+
+  if (array.length === 2) {
+    if (array[0] === target || array[1] === target) {
+      return true;
+    } else {
+      return false;
+    }
+  } else {
+    if (array[midpoint] > target) {
+      let newArr = array.slice(0, midpoint);
+      return binarySearch(newArr, target);
+    } else {
+      let newMidpoint = midpoint + 1;
+      let newArr = array.slice(newMidpoint);
+      return binarySearch(newArr, target);
+    }
+  }
 };
 
 /*
@@ -42,4 +39,4 @@ const binarySearch = (array, target) => {
 
 */
 
-module.exports = binarySearch
+module.exports = binarySearch;
