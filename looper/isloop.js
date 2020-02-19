@@ -1,8 +1,17 @@
 'use strict';
 
 //Complete this algo
-const isLoop = (linkedlist) => {
+const isLoop = (linkedlist, currentNode = linkedlist.head, array = []) => {
+  if (!currentNode.next) {
+    return false;
+  }
 
+  if (array.includes(currentNode.value)) {
+    return true;
+  } else {
+    array.push(currentNode.value)
+    return isLoop(linkedlist, currentNode.next, array)
+  }
 };
 
 
